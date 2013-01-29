@@ -7,6 +7,28 @@ is a library for training and querying a natural language request understanding 
 * JRuby
 * Doesn't support Windows at the moment (but this wouldn't be hard to fix)
 
+## Synopsis
+
+```ruby
+class BasicTest < MiniTest::Unit::TestCase
+  def test_sports_classification
+    assert_equal 'sports', MySubmarine.query("what's the score")[:classification]
+  end
+  
+  def test_music_classification
+    assert_equal 'music', MySubmarine.query("play my favorite song")[:classification]
+  end
+  
+  def test_artist_annotation
+    assert_equal 'foster the people', MySubmarine.query("play music by foster the people")[:annotations][:artist]
+  end
+
+  def test_song_annotation
+    assert_equal "I'm on a boat", MySubmarine.query("play I'm on a boat")[:annotations][:song]
+  end
+end
+```
+
 ## How to
 
 * /training_data/music/1
